@@ -62,7 +62,7 @@ namespace EF_Training_1
                 
                 //db.Database.ExecuteSqlCommand("DELETE FROM dbo.Course WHERE CourseID=@ID",
                 //    new SqlParameter("@ID",7));
-                var person = db.Database.SqlQuery<Person>("SELECT top 10 * FROM Person ", new SqlParameter("@ID",1));
+                var person = db.Database.SqlQuery<Person>("SELECT top 10 * FROM Person where ID >@p0 ", 1);
                 foreach (var item in person)
                 {
                     Console.WriteLine(item.FirstName);
