@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,8 +53,20 @@ namespace EF_Training_1
                 #endregion
 
                 #region Training Delete
-                db.Course.Remove(db.Course.FirstOrDefault(p => p.CourseID == 1));
-                db.SaveChanges();
+               // db.Course.Remove(db.Course.FirstOrDefault(p => p.CourseID == 11));
+               //// db.Course.Remove(db.Course.Find(10));
+               // db.SaveChanges();
+                #endregion
+
+                #region Training RunSQL
+                
+                //db.Database.ExecuteSqlCommand("DELETE FROM dbo.Course WHERE CourseID=@ID",
+                //    new SqlParameter("@ID",7));
+                var person = db.Database.SqlQuery<Person>("SELECT top 10 * FROM Person ", new SqlParameter("@ID",1));
+                foreach (var item in person)
+                {
+                    Console.WriteLine(item.FirstName);
+                }
                 #endregion
             }
         }
