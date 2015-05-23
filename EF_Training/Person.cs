@@ -27,10 +27,12 @@ namespace EF_Training_1
         public Nullable<System.DateTime> HireDate { get; set; }
         public Nullable<System.DateTime> EnrollmentDate { get; set; }
         public string Discriminator { get; set; }
+        public Nullable<int> CreatorID { get; set; }
     
         public virtual ICollection<Department> Department { get; set; }
         public virtual ICollection<Enrollment> Enrollment { get; set; }
         public virtual OfficeAssignment OfficeAssignment { get; set; }
         public virtual ICollection<Course> Course { get; set; }
+        public virtual User User { get; set; }
     }
 }

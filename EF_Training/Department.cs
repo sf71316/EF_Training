@@ -25,8 +25,10 @@ namespace EF_Training_1
         public System.DateTime StartDate { get; set; }
         public Nullable<int> InstructorID { get; set; }
         public byte[] RowVersion { get; set; }
+        public Nullable<int> CreatorID { get; set; }
     
         public virtual ICollection<Course> Course { get; set; }
         public virtual Person Person { get; set; }
+        public virtual User User { get; set; }
     }
 }

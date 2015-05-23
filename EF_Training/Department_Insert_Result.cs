@@ -10,15 +10,10 @@
 namespace EF_Training_1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class OfficeAssignment
+    public partial class Department_Insert_Result
     {
-        public int InstructorID { get; set; }
-        public string Location { get; set; }
-        public Nullable<int> CreatorID { get; set; }
-    
-        public virtual Person Person { get; set; }
-        public virtual User User { get; set; }
+        public int DepartmentID { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

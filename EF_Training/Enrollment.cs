@@ -18,8 +18,10 @@ namespace EF_Training_1
         public int CourseID { get; set; }
         public int StudentID { get; set; }
         public Nullable<int> Grade { get; set; }
+        public Nullable<int> CreatorID { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual Person Person { get; set; }
+        public virtual User User { get; set; }
     }
 }

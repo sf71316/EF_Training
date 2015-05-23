@@ -24,9 +24,11 @@ namespace EF_Training_1
         public string Title { get; set; }
         public int Credits { get; set; }
         public int DepartmentID { get; set; }
+        public Nullable<int> CreatorID { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual ICollection<Enrollment> Enrollment { get; set; }
         public virtual ICollection<Person> Person { get; set; }
+        public virtual User User { get; set; }
     }
 }

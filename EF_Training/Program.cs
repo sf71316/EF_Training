@@ -16,7 +16,15 @@ namespace EF_Training_1
                 {
                     Console.WriteLine(item.Title);
                 }
-                Console.ReadLine();
+                Console.WriteLine();
+                foreach (var item in db.Department)
+                {
+                    Console.WriteLine(item.Name);
+                    foreach (var c in item.Course)
+                    {
+                        Console.WriteLine("\t"+c.Title);
+                    }
+                }
             }
         }
     }
