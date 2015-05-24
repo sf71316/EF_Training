@@ -92,6 +92,9 @@
     <Compile Include="User.cs">
       <DependentUpon>ContosoUniversity.tt</DependentUpon>
     </Compile>
+    <Compile Include="vwCourseDep.cs">
+      <DependentUpon>ContosoUniversity.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

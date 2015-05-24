@@ -16,6 +16,7 @@
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_Enrollment_dbo_Person_StudentID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityModel.FK_dbo_OfficeAssignment_dbo_Instructor_InstructorID" ManuallyRouted="false" />
         <AssociationConnector Association="ContosoUniversityModel.CourseInstructor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ContosoUniversityModel.vwCourseDep" Width="1.5" PointX="5.375" PointY="5.75" />
         </Diagram>
       <Diagram DiagramId="99ed41da3c3a40759114ad567c625db0" Name="Diagram2" >
         <EntityTypeShape EntityType="ContosoUniversityModel.User" Width="1.5" PointX="0.75" PointY="0.75" />

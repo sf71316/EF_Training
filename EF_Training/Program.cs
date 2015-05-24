@@ -138,17 +138,41 @@ namespace EF_Trainnig
             #endregion
 
             #region Usaged Enum
-            using (var db = new ContosoUniversityEntities())
-            {
-                db.Course.Add(new Course
-                {
-                    Title = "Class 6",
-                    Credits = CourseCredits.Level2,
-                    DepartmentID = 1
-                });
-                db.SaveChanges();
-            }
+            //using (var db = new ContosoUniversityEntities())
+            //{
+            //    db.Course.Add(new Course
+            //    {
+            //        Title = "Class 6",
+            //        Credits = CourseCredits.Level2,
+            //        DepartmentID = 1
+            //    });
+            //    db.SaveChanges();
+            //}
             #endregion
+
+            #region Usaged View
+            //using (var db = new ContosoUniversityEntities())
+            //{
+            //    foreach (var item in db.vwCourseDep)
+            //    {
+            //        Console.WriteLine(item.Name+" "+item.Title);
+            //    }
+            //}
+            #endregion
+
+            #region Trainning Output Log
+            //using (var db = new ContosoUniversityEntities())
+            //{
+            //    db.Database.Log = p => {
+            //        System.IO.File.AppendAllText(@"C:\log.txt", p);
+            //    };
+            //    foreach (var item in db.Course)
+            //    {
+                    
+            //    }
+            //}
+            #endregion
+
         }
     }
 }

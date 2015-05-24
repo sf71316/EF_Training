@@ -76,6 +76,17 @@
           <Property Name="Username" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ContosoUniversity.dbo.vwCourseDep' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwCourseDep">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_Course_User">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Course" Type="Self.Course" Multiplicity="*" />
@@ -259,6 +270,14 @@
           <EntitySet Name="OfficeAssignment" EntityType="Self.OfficeAssignment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwCourseDep" EntityType="Self.vwCourseDep" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwCourseDep].[RowID] AS [RowID], 
+    [vwCourseDep].[DepartmentID] AS [DepartmentID], 
+    [vwCourseDep].[Name] AS [Name], 
+    [vwCourseDep].[Title] AS [Title]
+    FROM [dbo].[vwCourseDep] AS [vwCourseDep]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Course_User" Association="Self.FK_Course_User">
             <End Role="User" EntitySet="User" />
             <End Role="Course" EntitySet="Course" />
@@ -526,6 +545,7 @@
           <FunctionImport Name="GetCourse" EntitySet="Course" ReturnType="Collection(ContosoUniversityModel.Course)">
           <Parameter Name="Credits" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="vwCourseDep" EntityType="ContosoUniversityModel.vwCourseDep" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -609,6 +629,15 @@
           <Member Name="Level2" Value="2" />
           <Member Name="Level3" Value="3" />
         </EnumType>
+        <EntityType Name="vwCourseDep">
+          <Key>
+            <PropertyRef Name="RowID" />
+          </Key>
+          <Property Name="RowID" Type="Int64" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -704,6 +733,16 @@
           <FunctionImportMapping FunctionImportName="Department_Update" FunctionName="ContosoUniversityModel.Store.Department_Update" />
           <FunctionImportMapping FunctionImportName="GetCourse" FunctionName="ContosoUniversityModel.Store.GetCourse">
           </FunctionImportMapping>
+          <EntitySetMapping Name="vwCourseDep">
+            <EntityTypeMapping TypeName="ContosoUniversityModel.vwCourseDep">
+              <MappingFragment StoreEntitySet="vwCourseDep">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

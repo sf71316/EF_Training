@@ -33,6 +33,7 @@ namespace EF_Trainnig
         public virtual DbSet<OfficeAssignment> OfficeAssignment { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<vwCourseDep> vwCourseDep { get; set; }
     
         public virtual int Department_Delete(Nullable<int> departmentID, byte[] rowVersion_Original)
         {
