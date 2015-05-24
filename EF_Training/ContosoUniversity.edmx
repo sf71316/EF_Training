@@ -11,11 +11,12 @@
           </Key>
           <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
-          <Property Name="Credits1" Type="int" Nullable="false" />
+          <Property Name="Credits" Type="int" Nullable="false" />
           <Property Name="DepartmentID" Type="int" Nullable="false" />
           <Property Name="CreatorID" Type="int" />
           <Property Name="CreatedOn" Type="datetime" Nullable="false" />
           <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="RowVersion" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <EntityType Name="CourseInstructor">
           <Key>
@@ -247,6 +248,9 @@
           <Parameter Name="InstructorID" Type="int" Mode="In" />
           <Parameter Name="RowVersion_Original" Type="timestamp" Mode="In" />
         </Function>
+        <Function Name="GetCourse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Credits" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="ContosoUniversityModelStoreContainer">
           <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CourseInstructor" EntityType="Self.CourseInstructor" Schema="dbo" store:Type="Tables" />
@@ -320,9 +324,10 @@
           <NavigationProperty Name="Person" Relationship="Self.CourseInstructor" FromRole="Course" ToRole="Person" />
           <Property Name="CreatorID" Type="Int32" />
           <NavigationProperty Name="User" Relationship="ContosoUniversityModel.FK_Course_User" FromRole="Course" ToRole="User" />
-          <Property Name="Credits" Type="Int32" Nullable="false" />
+          <Property Name="Credits" Type="ContosoUniversityModel.CourseCredits" Nullable="false" />
           <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -518,6 +523,9 @@
             <Parameter Name="InstructorID" Mode="In" Type="Int32" />
             <Parameter Name="RowVersion_Original" Mode="In" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="GetCourse" EntitySet="Course" ReturnType="Collection(ContosoUniversityModel.Course)">
+          <Parameter Name="Credits" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -596,6 +604,11 @@
           <Property Type="Int32" Name="DepartmentID" Nullable="false" />
           <Property Type="Binary" Name="RowVersion" Nullable="false" MaxLength="8" />
         </ComplexType>
+        <EnumType Name="CourseCredits">
+          <Member Name="Level1" Value="1" />
+          <Member Name="Level2" Value="2" />
+          <Member Name="Level3" Value="3" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -605,9 +618,10 @@
           <EntitySetMapping Name="Course">
             <EntityTypeMapping TypeName="ContosoUniversityModel.Course">
               <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Credits" ColumnName="Credits1" />
                 <ScalarProperty Name="CreatorID" ColumnName="CreatorID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -688,6 +702,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="Department_Update" FunctionName="ContosoUniversityModel.Store.Department_Update" />
+          <FunctionImportMapping FunctionImportName="GetCourse" FunctionName="ContosoUniversityModel.Store.GetCourse">
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

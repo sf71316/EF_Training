@@ -96,5 +96,23 @@ namespace EF_Trainnig
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<byte[]>("Department_Update", departmentIDParameter, nameParameter, budgetParameter, startDateParameter, instructorIDParameter, rowVersion_OriginalParameter);
         }
+    
+        public virtual ObjectResult<Course> GetCourse(Nullable<int> credits)
+        {
+            var creditsParameter = credits.HasValue ?
+                new ObjectParameter("Credits", credits) :
+                new ObjectParameter("Credits", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Course>("GetCourse", creditsParameter);
+        }
+    
+        public virtual ObjectResult<Course> GetCourse(Nullable<int> credits, MergeOption mergeOption)
+        {
+            var creditsParameter = credits.HasValue ?
+                new ObjectParameter("Credits", credits) :
+                new ObjectParameter("Credits", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Course>("GetCourse", mergeOption, creditsParameter);
+        }
     }
 }
