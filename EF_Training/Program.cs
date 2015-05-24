@@ -62,11 +62,32 @@ namespace EF_Trainnig
                 
                 //db.Database.ExecuteSqlCommand("DELETE FROM dbo.Course WHERE CourseID=@ID",
                 //    new SqlParameter("@ID",7));
-                var person = db.Database.SqlQuery<Person>("SELECT top 10 * FROM Person where ID >@p0 ", 1);
-                foreach (var item in person)
-                {
-                    Console.WriteLine(item.FirstName);
-                }
+                //var person = db.Database.SqlQuery<Person>("SELECT top 10 * FROM Person where ID >@p0 ", 1);
+                //foreach (var item in person)
+                //{
+                //    Console.WriteLine(item.FirstName);
+                //}
+                #endregion
+
+                #region Trainning Get Entity Status
+                //var c = db.Course.Find(2);
+
+                //Console.WriteLine("Status:" + db.Entry(c).State);
+                //c.Title = "Git新手入門";
+                //Console.WriteLine("Status:" + db.Entry(c).State);
+                //db.Course.Remove(c);
+                //Console.WriteLine("Status:" + db.Entry(c).State);
+                #endregion
+
+                #region Trainning jude Entity Status & process (save createdon & modifiedon)
+                db.Course.Add(new Course { 
+                 Title="Class 1",
+                 Credits=2,
+                 DepartmentID=1
+                });
+                var c = db.Course.Find(2);
+                c.Title = "Git新手入門!!!!!!";
+                db.SaveChanges();
                 #endregion
             }
         }
