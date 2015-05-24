@@ -15,7 +15,7 @@ namespace Ef_CodeFirst
         public int StandardId { get; set; }
         public string StandardName { get; set; }
 
-        public ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Students { get; set; }
 
     }
 }

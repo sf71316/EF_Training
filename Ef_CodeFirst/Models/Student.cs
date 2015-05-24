@@ -19,6 +19,6 @@ namespace Ef_CodeFirst
         public decimal Height { get; set; }
         public float Weight { get; set; }
 
-        public Standard Standard { get; set; }
+        public virtual Standard Standard { get; set; }
     }
 }
