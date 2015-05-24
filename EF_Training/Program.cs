@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EF_Training_1
+namespace EF_Trainnig
 {
     class Program
     {
@@ -13,7 +13,7 @@ namespace EF_Training_1
         {
             using (var db =new ContosoUniversityEntities())
             {
-                #region Trainig Select
+                #region Trainnig Select
                 //foreach (var item in db.Course)
                 //{
                 //    Console.WriteLine(item.Title);
@@ -29,7 +29,7 @@ namespace EF_Training_1
                 //}
                 #endregion
 
-                #region Training Update
+                #region Trainnig Update
                 //foreach (var item in db.Course)
                 //{
                 //    item.Title += "!";
@@ -37,7 +37,7 @@ namespace EF_Training_1
                 //db.SaveChanges();
                 #endregion
 
-                #region Training Insert
+                #region Trainnig Insert
                 //db.Course.Add(new Course { 
                 //    Title="Entity Framework 1",
                 //    Credits=1,
@@ -52,13 +52,13 @@ namespace EF_Training_1
                 //db.SaveChanges();
                 #endregion
 
-                #region Training Delete
+                #region Trainnig Delete
                // db.Course.Remove(db.Course.FirstOrDefault(p => p.CourseID == 11));
                //// db.Course.Remove(db.Course.Find(10));
                // db.SaveChanges();
                 #endregion
 
-                #region Training RunSQL
+                #region Trainnig RunSQL
                 
                 //db.Database.ExecuteSqlCommand("DELETE FROM dbo.Course WHERE CourseID=@ID",
                 //    new SqlParameter("@ID",7));

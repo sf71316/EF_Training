@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF_Training_1
+namespace EF_Trainnig
 {
     using System;
     

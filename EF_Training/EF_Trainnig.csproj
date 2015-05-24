@@ -7,8 +7,8 @@
     <ProjectGuid>{CC0DFBD4-570C-429D-9ECE-EAD9CE2CFD1E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EF_Training_1</RootNamespace>
-    <AssemblyName>EF_Training_1</AssemblyName>
+    <RootNamespace>EF_Trainnig</RootNamespace>
+    <AssemblyName>EF_Trainnig</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
