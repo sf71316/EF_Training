@@ -10,7 +10,7 @@ namespace Ef_CodeFirst
     public class SchoolContext : DbContext
     {
         public SchoolContext()
-            : base()
+            : base("name=Ef_CodeFirst.Properties.Settings.DbConnection")
         {
 
         }
